@@ -1,0 +1,17 @@
+Notes for Students:
+
+Gherkin language used.
+
+given() - pre-condition
+when()  - when there is an action
+then() - for validation
+and()  - and
+
+Content Type is used to specify content type of the Request Body.
+
+
+APRIL:
+    then().
+    log().ifValidationFails().
+    assertThat().
+    statusCode(200).
