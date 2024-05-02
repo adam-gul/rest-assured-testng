@@ -15,3 +15,10 @@ APRIL:
     log().ifValidationFails().
     assertThat().
     statusCode(200).
+
+
+
+    3 git commands
+    git add .
+    git commit -m"getContactListAPI test added"
+    git push
