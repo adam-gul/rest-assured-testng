@@ -22,3 +22,8 @@ APRIL:
     git add .
     git commit -m"getContactListAPI test added"
     git push
+
+
+    The "Content-Type" header in an API request specifies the format of the data being sent to the server, like JSON or XML.
+    The "Accept" header specifies the desired format for the response data, indicating what the client can handle.
+    So, "Content-Type" tells the server what format you're sending, while "Accept" tells the server what format you want back.

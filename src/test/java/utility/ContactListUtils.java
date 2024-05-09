@@ -2,8 +2,12 @@ package utility;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +38,17 @@ public class ContactListUtils extends ContactListTestBase{
         String token = jsonPath.getString("token");
 
         return "Bearer " + token;
+    }
+
+    public static RequestSpecification setRequestSpecification(ContentType contentType){
+
+        RequestSpecification requestSpecification = new RequestSpecBuilder().
+                addHeader("Authorization", ContactListUtils.getToken("kool@coders.com", "1234567")).
+                setContentType(ContentType.JSON).log(LogDetail.ALL).
+                setAccept(contentType).
+                build();
+
+        return requestSpecification;
     }
 
 
