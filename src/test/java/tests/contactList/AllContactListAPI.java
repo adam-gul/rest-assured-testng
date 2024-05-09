@@ -41,9 +41,8 @@ public class AllContactListAPI extends ContactListTestBase {
                         when().
                         post("/contacts").
                         then().
-                        statusCode(201).
-                        contentType(ContentType.JSON).
-                        log().all().
+                        assertThat().
+                        spec(ContactListUtils.setResponseSpecification(201, ContentType.JSON)).
                         extract().response().jsonPath();
 
         String firstName = jsonPath.getString("firstName");
@@ -69,9 +68,7 @@ public class AllContactListAPI extends ContactListTestBase {
                         get("/contacts").
                         then().
                         assertThat().
-                        statusCode(200).
-                        contentType(ContentType.JSON).
-                        log().all().
+                        spec(ContactListUtils.setResponseSpecification(200, ContentType.JSON)).
                         extract().jsonPath();
 
         List contacts = jsonPath.getList("");
@@ -112,9 +109,7 @@ public class AllContactListAPI extends ContactListTestBase {
                         when().
                         put("/contacts/{contactId}").
                         then().
-                        statusCode(200).
-                        contentType(ContentType.JSON).
-                        log().all().
+                        spec(ContactListUtils.setResponseSpecification(200, ContentType.JSON)).
                         extract().response().jsonPath();
 
         String firstName = jsonPath.getString("firstName");
@@ -126,13 +121,11 @@ public class AllContactListAPI extends ContactListTestBase {
         Response response =
         given().
                 spec(ContactListUtils.setRequestSpecification(ContentType.HTML)).
-                pathParam("contactId","663c111fc81cd90013c5fd99" ).
+                pathParam("contactId",id ).
                 when().
                 delete("/contacts/{contactId}").
                 then().
-                statusCode(200).
-                contentType(ContentType.HTML).
-                log().all().
+                spec(ContactListUtils.setResponseSpecification(200, ContentType.HTML)).
                 extract().response();
 
         String message = response.body().asString();

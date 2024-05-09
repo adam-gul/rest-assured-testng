@@ -13,7 +13,7 @@ public class DeleteContactAPI extends ContactListTestBase {
 
         given().
         header("Authorization", ContactListUtils.getToken("kool@coders.com", "1234567")).
-        pathParam("contactId","6632dfabcad2be001343498d" ).
+        pathParam("contactId","663c208ac81cd90013c5fdce" ).
         when().
         delete("/contacts/{contactId}").
         then().

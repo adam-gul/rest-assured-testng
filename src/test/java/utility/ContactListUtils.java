@@ -3,6 +3,7 @@ package utility;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -49,6 +50,16 @@ public class ContactListUtils extends ContactListTestBase{
                 build();
 
         return requestSpecification;
+    }
+
+    public static ResponseSpecification setResponseSpecification(int statusCode, ContentType contentType){
+
+        ResponseSpecification responseSpecification = new ResponseSpecBuilder().
+                expectStatusCode(statusCode).
+                expectContentType(contentType).log(LogDetail.ALL).
+                build();
+
+        return responseSpecification;
     }
 
 
